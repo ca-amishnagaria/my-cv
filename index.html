@@ -3,84 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amish Nagaria | Interactive CV</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Amish Nagaria | Professional Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #0f172a;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent: #38bdf8;
+            --border: #475569;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Header */
+        header { border-bottom: 1px solid var(--border); padding-bottom: 30px; margin-bottom: 40px; }
+        h1 { font-size: 3rem; margin-bottom: 5px; color: var(--text-main); }
+        .subtitle { font-size: 1.2rem; color: var(--accent); margin-bottom: 15px; font-weight: 600; }
+        .contact-info { display: flex; gap: 20px; color: var(--text-muted); font-size: 0.95rem; flex-wrap: wrap; }
+        
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.8rem; color: var(--text-main); margin-bottom: 20px; display: inline-block; border-bottom: 2px solid var(--accent); padding-bottom: 5px; }
+        p.summary { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; }
+
+        /* Accordion Styles */
+        .accordion {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        
+        .accordion:hover { border-color: var(--accent); }
+
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover { background-color: var(--bg-hover); }
+        .accordion-header .meta { font-size: 0.9rem; color: var(--accent); font-weight: 400; }
+        
+        .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .accordion.active .icon { transform: rotate(45deg); color: var(--accent); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: var(--bg-page);
+        }
+
+        .content-inner {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+        
+        .content-inner ul { list-style-position: inside; margin-top: 10px; }
+        .content-inner li { margin-bottom: 10px; }
+
+        /* Simple Grid for static info */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .card { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+        .card h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .card p { font-size: 0.9rem; color: var(--text-muted); }
+    </style>
 </head>
 <body>
 
     <div class="container">
-        <header class="profile-header">
-            <div class="avatar">AN</div>
+        <header>
             <h1>Amish Nagaria</h1>
-            <p class="subtitle">CA | CIA | AI Automation Specialist</p>
+            <div class="subtitle">Chartered Accountant | CIA | CISA Candidate</div>
+            <div class="contact-info">
+                <span>📍 Dombivli, Thane</span>
+                <span>✉️ amish.nagaria96@gmail.com</span>
+                <span>📞 +91-9892641365</span>
+            </div>
         </header>
 
-        <nav class="tab-nav">
-            <button class="tab-btn active" onclick="openTab(event, 'summary')">Overview</button>
-            <button class="tab-btn" onclick="openTab(event, 'tech')">AI & Tech</button>
-            <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
-        </nav>
+        <section>
+            <h2>Executive Summary</h2>
+            <p class="summary">Finance leader with extensive experience delivering risk-based engagements in the manufacturing sector across India and Africa. Proven expertise spanning Elevators, Chemicals, Diversified Industrial Products, and Hospitality. Currently driving departmental efficiency by integrating Python-based automation and AI tools to streamline financial oversight, data reconciliation, and risk assessment.</p>
+        </section>
 
-        <main class="content-area">
+        <section>
+            <h2>AI & Automation Projects</h2>
+            <p class="summary">Click to expand project details and efficiency metrics.</p>
+
+            <div class="accordion">
+                <button class="accordion-header">
+                    <span>Python & Telegram API Automation</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <p><strong>Tech Stack:</strong> Python, Telegram API, Pandas</p>
+                        <ul>
+                            <li>Developed custom Python scripts to automate complex data reconciliation.</li>
+                            <li>Integrated the Telegram API to automate communication workflows and data synchronization, reducing manual oversight.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-header">
+                    <span>AI-Driven Image Identification</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <p><strong>Tech Stack:</strong> Python, Machine Learning, Computer Vision</p>
+                        <ul>
+                            <li>Developed protocols to categorize and audit physical documentation automatically using AI vision capabilities.</li>
+                            <li>Streamlined the ingestion of physical audit evidence into digital ecosystems.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-header">
+                    <span>Algorithmic Trade Zone Identification</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <p><strong>Tech Stack:</strong> AmiBroker AFL, Data Analytics</p>
+                        <ul>
+                            <li>Authored custom AmiBroker AFL scripts to identify potential market trade zones based on moving averages.</li>
+                            <li>Automated open interest analysis for objective strategy deployment.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Professional Experience</h2>
             
-            <div id="summary" class="tab-content active">
-                <h2>Executive Summary</h2>
-                <p>Finance leader delivering risk-based engagements in the manufacturing sector. Driving departmental efficiency by integrating Python-based automation and AI tools to streamline financial oversight and data reconciliation.</p>
-                
-                <div class="contact-pills">
-                    <span>📍 Dombivli, Thane</span>
-                    <span>✉️ amish.nagaria96@gmail.com</span>
-                </div>
-            </div>
-
-            <div id="tech" class="tab-content">
-                <h2>AI & Automation Stack</h2>
-                <ul class="interactive-list">
-                    <li><strong>Process Automation:</strong> Custom Python scripts integrating Telegram API for workflow automation.</li>
-                    <li><strong>Machine Learning:</strong> AI-driven image identification for auditing physical documentation.</li>
-                    <li><strong>Financial Algorithms:</strong> AmiBroker AFL scripts for open interest analysis.</li>
-                    <li><strong>Core Stack:</strong> Python, R, Power BI, SAP (FI, MM, QM, PP), Oracle ERP.</li>
-                </ul>
-            </div>
-
-            <div id="experience" class="tab-content">
-                <h2>Professional Journey</h2>
-                <div class="timeline">
-                    <div class="job">
-                        <h3>Chief Audit Executive</h3>
-                        <p class="date">June 2022 - Present</p>
-                        <p>Leading internal audit and implementing automated risk-assessment tools.</p>
+            <div class="accordion">
+                <button class="accordion-header">
+                    <div>
+                        Chief Audit Executive
+                        <div class="meta">June 2022 - Present</div>
                     </div>
-                    <div class="job">
-                        <h3>Consultant | Ernst & Young</h3>
-                        <p class="date">2019 - 2021</p>
-                        <p>Performed global supply chain audits and evaluated Capex for manufacturing leaders.</p>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <ul>
+                            <li>Leading the internal audit function and managing cross-functional teams.</li>
+                            <li>Implementing automated risk-assessment tools to improve departmental efficiency and oversight.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-        </main>
+            <div class="accordion">
+                <button class="accordion-header">
+                    <div>
+                        Consultant & Associate Consultant | Ernst & Young LLP
+                        <div class="meta">2019 - 2021</div>
+                    </div>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <ul>
+                            <li><strong>Global Elevator Manufacturer:</strong> Performed audit of Sourcing, Supply chain, Inventory, Accounts payable, and SOX for Expenditure and Production cycles.</li>
+                            <li><strong>Chemicals & Manufacturing:</strong> Reviewed Soda Ash Operations, material consumption, quality checks, packaging, contractor management, and Safety, Health & Environment (SHE) protocols.</li>
+                            <li><strong>Capital Expenditure:</strong> Evaluated Capex for growth and sustenance, covering project evaluation, budgeting, capitalization, and post-completion analysis.</li>
+                            <li><strong>Hospitality & Consumer Products:</strong> Performed reviews of procurement processes and revenue streams, including sourcing of agricultural commodities.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-header">
+                    <div>
+                        Articleship | Jayesh Sanghrajka and Company LLP
+                        <div class="meta">2015 - 2018</div>
+                    </div>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="content-inner">
+                        <ul>
+                            <li>Audited corporate functions including procurement, order to cash, fixed assets, sales and marketing, HR, and Payroll.</li>
+                            <li>Managed follow-up process of audit open action items and developed monthly open issue trackers for process owners.</li>
+                            <li>Conducted Site Reviews for commercial and residential construction projects for identifying cost reduction, revenue loss, and working capital blockages.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education & Core Skills</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Certifications</h3>
+                    <p>Chartered Accountant (ICAI, Nov 2018)<br>Certified Internal Auditor (CIA)<br>Information Systems Audit (CISA) - Candidate</p>
+                </div>
+                <div class="card">
+                    <h3>Core Technologies</h3>
+                    <p>Python, R, Excel VBA, Power BI, ACL</p>
+                </div>
+                <div class="card">
+                    <h3>Enterprise Systems</h3>
+                    <p>SAP (FI, MM, QM, PP Modules), Oracle ERP</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
-        function openTab(evt, tabName) {
-            // Hide all tab content
-            let tabContent = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
+        // Accordion Interaction Logic
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordion = button.parentElement;
+                const content = button.nextElementSibling;
+                
+                // Toggle active class for styling/icon rotation
+                accordion.classList.toggle('active');
 
-            // Remove the 'active' class from all buttons
-            let tabBtns = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < tabBtns.length; i++) {
-                tabBtns[i].classList.remove("active");
-            }
-
-            // Show the current tab, and add an 'active' class to the button that opened the tab
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
+                // Animate height
+                if (accordion.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
     </script>
 </body>
 </html>
